@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ajnish Kumar - Resume</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Calibri', 'Arial', sans-serif;
+            line-height: 1.6;
+            color: #000;
+            background: #fff;
+            font-size: 11pt;
+        }
+
+        .container {
+            max-width: 8.5in;
+            height: 11in;
+            margin: 0 auto;
+            padding: 0.5in;
+            background: white;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 0.3in;
+            border-bottom: 2px solid #000;
+            padding-bottom: 0.2in;
+        }
+
+        .name {
+            font-size: 16pt;
+            font-weight: bold;
+            margin-bottom: 0.05in;
+        }
+
+        .contact-info {
+            font-size: 10pt;
+            line-height: 1.4;
+        }
+
+        .contact-info a {
+            color: #000;
+            text-decoration: none;
+        }
+
+        .section-title {
+            font-size: 12pt;
+            font-weight: bold;
+            margin-top: 0.2in;
+            margin-bottom: 0.1in;
+            text-transform: uppercase;
+            border-bottom: 1px solid #000;
+            padding-bottom: 0.05in;
+        }
+
+        .entry {
+            margin-bottom: 0.15in;
+        }
+
+        .entry-header {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 0.05in;
+        }
+
+        .entry-title {
+            font-weight: bold;
+            font-size: 11pt;
+        }
+
+        .entry-subtitle {
+            font-style: italic;
+            font-size: 10pt;
+        }
+
+        .entry-date {
+            font-size: 10pt;
+            text-align: right;
+        }
+
+        .entry-description {
+            font-size: 10pt;
+            line-height: 1.5;
+            margin-left: 0.15in;
+        }
+
+        .bullet-list {
+            margin-left: 0.2in;
+            font-size: 10pt;
+            line-height: 1.4;
+        }
+
+        .bullet-list li {
+            margin-bottom: 0.05in;
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0.1in;
+            font-size: 10pt;
+        }
+
+        .skill-item {
+            margin-bottom: 0.08in;
+        }
+
+        .skill-name {
+            font-weight: bold;
+        }
+
+        .skill-level {
+            color: #333;
+        }
+
+        .two-column {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0.2in;
+        }
+
+        .gpa, .certification {
+            margin-bottom: 0.1in;
+            font-size: 10pt;
+        }
+
+        @media print {
+            body {
+                background: white;
+            }
+            .container {
+                max-width: 100%;
+                height: auto;
+                padding: 0.5in;
+                box-shadow: none;
+            }
+        }
+
+        @page {
+            size: letter;
+            margin: 0.5in;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <div class="header">
+            <div class="name">AJNISH KUMAR</div>
+            <div class="contact-info">
+                <div>Hazaribagh, Jharkhand | India</div>
+                <div>Phone: +91 9608415521 | Email: ajnishkumar7070@gmail.com</div>
+                <div>GitHub: github.com/ajnish-kumar-sahu | LinkedIn: linkedin.com/in/ajnish-kumar-20ag</div>
+            </div>
+        </div>
+
+        <!-- Professional Summary -->
+        <div class="section-title">PROFESSIONAL SUMMARY</div>
+        <div style="font-size: 10pt; line-height: 1.5; margin-bottom: 0.15in;">
+            BCA student specializing in software development with strong foundation in Java, C/C++, and web technologies. Demonstrated proficiency in building robust applications, solving complex algorithmic problems, and creating responsive web solutions. Seeking opportunities to apply technical expertise and contribute to innovative software development projects.
+        </div>
+
+        <!-- Core Technical Skills -->
+        <div class="section-title">CORE TECHNICAL SKILLS</div>
+        <div class="skills-grid">
+            <div class="skill-item">
+                <span class="skill-name">Programming Languages:</span>
+                <span class="skill-level">Java, C, C++, JavaScript, HTML5, CSS3</span>
+            </div>
+            <div class="skill-item">
+                <span class="skill-name">Web Technologies:</span>
+                <span class="skill-level">HTML5, CSS3, JavaScript, Responsive Design</span>
+            </div>
+            <div class="skill-item">
+                <span class="skill-name">Core Competencies:</span>
+                <span class="skill-level">Object-Oriented Programming, Data Structures, Algorithms</span>
+            </div>
+            <div class="skill-item">
+                <span class="skill-name">Problem Solving:</span>
+                <span class="skill-level">Competitive Programming, Algorithm Design, Debugging</span>
+            </div>
+            <div class="skill-item">
+                <span class="skill-name">Software Development:</span>
+                <span class="skill-level">CRUD Operations, File Management, System Design</span>
+            </div>
+            <div class="skill-item">
+                <span class="skill-name">Tools & Platforms:</span>
+                <span class="skill-level">Git, GitHub, VS Code, Visual Studio</span>
+            </div>
+        </div>
+
+        <!-- Professional Experience / Projects -->
+        <div class="section-title">PROJECTS & EXPERIENCE</div>
+
+        <div class="entry">
+            <div class="entry-header">
+                <span class="entry-title">Personal Portfolio Website</span>
+                <span class="entry-date">2024</span>
+            </div>
+            <div class="entry-subtitle">Full-Stack Web Development Project</div>
+            <ul class="bullet-list">
+                <li>Developed responsive portfolio website using HTML5, CSS3, and JavaScript</li>
+                <li>Implemented smooth animations, dark mode functionality, and interactive components</li>
+                <li>Optimized for performance and SEO best practices</li>
+                <li>Deployed live application with continuous integration</li>
+            </ul>
+        </div>
+
+        <div class="entry">
+            <div class="entry-header">
+                <span class="entry-title">Assignment Cover Generator</span>
+                <span class="entry-date">2024</span>
+            </div>
+            <div class="entry-subtitle">Web Application Development</div>
+            <ul class="bullet-list">
+                <li>Built automated tool for generating professional assignment covers</li>
+                <li>Implemented customizable templates and formatting options</li>
+                <li>Ensured cross-browser compatibility and responsive design</li>
+                <li>Total Users: 500+, Average Rating: 4.8/5</li>
+            </ul>
+        </div>
+
+        <div class="entry">
+            <div class="entry-header">
+                <span class="entry-title">Monthly Item List Management System</span>
+                <span class="entry-date">2023</span>
+            </div>
+            <div class="entry-subtitle">Desktop Application Development</div>
+            <ul class="bullet-list">
+                <li>Developed comprehensive inventory management system in C++</li>
+                <li>Implemented CRUD operations with file-based data persistence</li>
+                <li>Designed efficient data structures for optimal performance</li>
+                <li>Applied object-oriented programming principles and design patterns</li>
+            </ul>
+        </div>
+
+        <!-- Education -->
+        <div class="section-title">EDUCATION</div>
+        <div class="entry">
+            <div class="entry-header">
+                <span class="entry-title">Bachelor of Computer Applications (BCA)</span>
+                <span class="entry-date">2023 - Present</span>
+            </div>
+            <div class="entry-subtitle">Vinoba Bhave University, Hazaribagh</div>
+            <div class="gpa">Current Focus: Software Development, Data Structures, Web Technologies</div>
+        </div>
+
+        <!-- Certifications & Achievements -->
+        <div class="section-title">CERTIFICATIONS & ACHIEVEMENTS</div>
+        <ul class="bullet-list">
+            <li>Completed Advanced Java Programming certification</li>
+            <li>Proficient in Data Structures and Algorithms implementation</li>
+            <li>Active contributor to open-source projects on GitHub</li>
+            <li>Demonstrated expertise in problem-solving and competitive programming</li>
+        </ul>
+    </div>
+</body>
+</html>

@@ -1,0 +1,195 @@
+%PDF-1.4
+1 0 obj
+<<
+/Type /Catalog
+/Pages 2 0 R
+>>
+endobj
+
+2 0 obj
+<<
+/Type /Pages
+/Kids [3 0 R]
+/Count 1
+>>
+endobj
+
+3 0 obj
+<<
+/Type /Page
+/Parent 2 0 R
+/MediaBox [0 0 612 792]
+/Contents 4 0 R
+/Resources <<
+/Font <<
+/F1 5 0 R
+/F2 6 0 R
+>>
+>>
+>>
+endobj
+
+4 0 obj
+<<
+/Length 2500
+>>
+stream
+BT
+/F1 16 Tf
+50 750 Td
+(AJNISH KUMAR) Tj
+0 -20 Td
+/F2 12 Tf
+(BCA Student & Developer) Tj
+0 -15 Td
+(Email: ajnishkumar7070@gmail.com | Phone: +91 9608415521) Tj
+0 -10 Td
+(Location: Hazaribagh, Jharkhand) Tj
+0 -10 Td
+(GitHub: github.com/ajnish-kumar-sahu | LinkedIn: linkedin.com/in/ajnish-kumar-20ag) Tj
+
+0 -30 Td
+/F1 14 Tf
+(PROFESSIONAL SUMMARY) Tj
+0 -15 Td
+/F2 11 Tf
+(Dedicated BCA student at Vinoba Bhave University with strong foundation in programming) Tj
+0 -12 Td
+(and web development. Specializing in Java, C/C++, and modern web technologies with) Tj
+0 -12 Td
+(hands-on experience in building practical applications and solving complex problems.) Tj
+
+0 -25 Td
+/F1 14 Tf
+(EDUCATION) Tj
+0 -15 Td
+/F2 11 Tf
+(Bachelor of Computer Applications \(BCA\)) Tj
+0 -12 Td
+(Vinoba Bhave University, Hazaribagh College | 2023 - 2026 \(Expected\)) Tj
+0 -12 Td
+(Specialization: Computer Science and Programming) Tj
+
+0 -25 Td
+/F1 14 Tf
+(TECHNICAL SKILLS) Tj
+0 -15 Td
+/F2 11 Tf
+(Programming Languages:) Tj
+0 -12 Td
+(• Java \(85% proficiency\) - Object-oriented programming, data structures) Tj
+0 -12 Td
+(• C/C++ \(80% proficiency\) - System programming, memory management) Tj
+0 -12 Td
+(• JavaScript \(78% proficiency\) - Web development, DOM manipulation) Tj
+
+0 -15 Td
+(Web Technologies:) Tj
+0 -12 Td
+(• HTML5, CSS3, JavaScript - Responsive web design) Tj
+0 -12 Td
+(• React, TypeScript - Modern frontend development) Tj
+0 -12 Td
+(• Tailwind CSS - Utility-first styling) Tj
+
+0 -15 Td
+(Core Competencies:) Tj
+0 -12 Td
+(• Data Structures & Algorithms \(75% proficiency\)) Tj
+0 -12 Td
+(• Problem Solving \(82% proficiency\)) Tj
+0 -12 Td
+(• Computer Science Fundamentals \(88% proficiency\)) Tj
+
+0 -25 Td
+/F1 14 Tf
+(FEATURED PROJECTS) Tj
+0 -15 Td
+/F2 11 Tf
+(Assignment Cover Generator | HTML, CSS, JavaScript) Tj
+0 -12 Td
+(• Web application for generating professional assignment covers) Tj
+0 -12 Td
+(• Features customizable templates and automatic formatting) Tj
+0 -12 Td
+(• Live Demo: ajnish-kumar-sahu.github.io/assignment-cover-generator/) Tj
+
+0 -15 Td
+(Monthly Item List Management System | C++) Tj
+0 -12 Td
+(• Comprehensive inventory management system with CRUD operations) Tj
+0 -12 Td
+(• Efficient data structures and file-based storage) Tj
+0 -12 Td
+(• GitHub: github.com/ajnish-kumar-sahu/Monthly-Item-List-Management-System) Tj
+
+0 -15 Td
+(Personal Portfolio Website | React, TypeScript, Tailwind CSS) Tj
+0 -12 Td
+(• Modern, responsive portfolio with interactive design) Tj
+0 -12 Td
+(• Features dark mode, animations, and SEO optimization) Tj
+0 -12 Td
+(• Live Site: modern-react-typescr-ur2h.bolt.host) Tj
+
+0 -25 Td
+/F1 14 Tf
+(ACHIEVEMENTS & ACTIVITIES) Tj
+0 -15 Td
+/F2 11 Tf
+(• Completed 12+ programming projects demonstrating practical skills) Tj
+0 -12 Td
+(• Active contributor to open-source projects on GitHub) Tj
+0 -12 Td
+(• Strong foundation in multiple programming paradigms) Tj
+0 -12 Td
+(• Continuous learner with focus on emerging technologies) Tj
+
+0 -25 Td
+/F1 14 Tf
+(CAREER OBJECTIVES) Tj
+0 -15 Td
+/F2 11 Tf
+(Seeking internship opportunities and collaborative projects to apply programming) Tj
+0 -12 Td
+(skills in real-world scenarios. Eager to contribute to innovative software solutions) Tj
+0 -12 Td
+(while continuing to learn and grow in the technology industry.) Tj
+
+ET
+endstream
+endobj
+
+5 0 obj
+<<
+/Type /Font
+/Subtype /Type1
+/BaseFont /Helvetica-Bold
+>>
+endobj
+
+6 0 obj
+<<
+/Type /Font
+/Subtype /Type1
+/BaseFont /Helvetica
+>>
+endobj
+
+xref
+0 7
+0000000000 65535 f 
+0000000009 00000 n 
+0000000058 00000 n 
+0000000115 00000 n 
+0000000274 00000 n 
+0000002826 00000 n 
+0000002903 00000 n 
+trailer
+<<
+/Size 7
+/Root 1 0 R
+>>
+startxref
+2976
+%%EOF

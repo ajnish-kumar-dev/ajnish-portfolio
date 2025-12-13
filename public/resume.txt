@@ -1,0 +1,108 @@
+AJNISH KUMAR
+
+Hazaribagh, Jharkhand | India
+Phone: +91 9608415521
+Email: ajnishkumar7070@gmail.com
+GitHub: github.com/ajnish-kumar-sahu
+LinkedIn: linkedin.com/in/ajnish-kumar-20ag
+
+---
+
+PROFESSIONAL SUMMARY
+
+BCA student specializing in software development with strong foundation in Java, C/C++, and web technologies. Demonstrated proficiency in building robust applications, solving complex algorithmic problems, and creating responsive web solutions. Seeking opportunities to apply technical expertise and contribute to innovative software development projects.
+
+---
+
+CORE TECHNICAL SKILLS
+
+Programming Languages: Java, C, C++, JavaScript, HTML5, CSS3
+
+Web Technologies: HTML5, CSS3, JavaScript, Responsive Design, Web Development
+
+Core Competencies: Object-Oriented Programming, Data Structures, Algorithms, System Design
+
+Problem Solving: Competitive Programming, Algorithm Design, Debugging, Code Optimization
+
+Software Development: CRUD Operations, File Management, Database Design, Application Development
+
+Tools and Platforms: Git, GitHub, Visual Studio, VS Code, Command Line
+
+---
+
+PROJECTS AND EXPERIENCE
+
+Personal Portfolio Website | 2024
+
+Full-Stack Web Development Project
+- Developed responsive portfolio website using HTML5, CSS3, and JavaScript
+- Implemented smooth animations, dark mode functionality, and interactive components
+- Optimized for performance and SEO best practices
+- Deployed live application with continuous integration
+- Technologies: HTML5, CSS3, JavaScript, Responsive Design
+
+Assignment Cover Generator | 2024
+
+Web Application Development
+- Built automated tool for generating professional assignment covers
+- Implemented customizable templates and formatting options
+- Ensured cross-browser compatibility and responsive design
+- Technologies: HTML5, CSS3, JavaScript, Responsive Design
+
+Monthly Item List Management System | 2023
+
+Desktop Application Development
+- Developed comprehensive inventory management system in C++
+- Implemented CRUD operations with file-based data persistence
+- Designed efficient data structures for optimal performance
+- Applied object-oriented programming principles and design patterns
+- Technologies: C++, Data Structures, File Management
+
+Programming Practice Solutions | 2023-2024
+
+Algorithmic Problem Solving
+- Collection of algorithmic solutions and data structure implementations
+- Comprehensive coverage of coding challenges and competitive programming problems
+- Well-documented code with explanations and complexity analysis
+- Technologies: Java, C, C++, Algorithms
+
+---
+
+EDUCATION
+
+Bachelor of Computer Applications (BCA)
+Vinoba Bhave University, Hazaribagh | 2023 - Present
+
+Current Focus: Software Development, Data Structures, Algorithms, Web Technologies
+
+---
+
+CERTIFICATIONS AND ACHIEVEMENTS
+
+- Completed Advanced Java Programming certification
+- Proficient in Data Structures and Algorithms implementation
+- Active contributor to open-source projects on GitHub
+- Demonstrated expertise in problem-solving and competitive programming
+- Strong foundation in computer science fundamentals
+
+---
+
+PROFICIENCY LEVELS
+
+Java: 85%
+C and C++: 80%
+Web Development: 78%
+Data Structures and Algorithms: 75%
+Problem Solving: 82%
+Computer Science Fundamentals: 88%
+
+---
+
+KEY STRENGTHS
+
+- Strong foundation in Object-Oriented Programming
+- Problem-solving and algorithmic thinking
+- Web development and responsive design expertise
+- Clean code practices and software architecture
+- Self-motivated learner with continuous improvement mindset
+- Collaborative team player with strong communication skills
