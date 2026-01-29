@@ -298,7 +298,7 @@ export const Hero: React.FC = () => {
           0%, 100% { background-position: 0% 50%; }
           50% { background-position: 100% 50%; }
         }
-        
+
         .animate-gradient {
           animation: gradient 6s ease infinite;
         }
@@ -308,7 +308,7 @@ export const Hero: React.FC = () => {
           25% { transform: rotate(20deg); }
           75% { transform: rotate(-15deg); }
         }
-        
+
         .animate-wave {
           animation: wave 2s ease-in-out infinite;
           display: inline-block;
@@ -319,7 +319,7 @@ export const Hero: React.FC = () => {
           from { transform: rotate(0deg); }
           to { transform: rotate(360deg); }
         }
-        
+
         .animate-spin-slow {
           animation: spin-slow 8s linear infinite;
         }
@@ -328,9 +328,20 @@ export const Hero: React.FC = () => {
           0%, 100% { transform: translateY(0); }
           50% { transform: translateY(-10px); }
         }
-        
+
         .animate-bounce-slow {
           animation: bounce-slow 3s ease-in-out infinite;
+        }
+
+        @keyframes float {
+          0%, 100% { transform: translateY(0px) translateX(0px); }
+          25% { transform: translateY(-20px) translateX(10px); }
+          50% { transform: translateY(-40px) translateX(-10px); }
+          75% { transform: translateY(-20px) translateX(15px); }
+        }
+
+        .animate-float {
+          animation: float 6s ease-in-out infinite;
         }
       `}</style>
     </section>
