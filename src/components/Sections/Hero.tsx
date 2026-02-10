@@ -6,6 +6,7 @@ import { personalInfo, typingTexts, stats } from '../../data/portfolio';
 
 export const Hero: React.FC = () => {
   const [ref, isVisible] = useIntersectionObserver({ threshold: 0.3 });
+  const statsRef = React.useRef<HTMLDivElement>(null);
   const typingText = useTypingAnimation({
     texts: typingTexts,
     typeSpeed: 100,
@@ -226,12 +227,8 @@ export const Hero: React.FC = () => {
             </div>
 
             {/* Enhanced Quick Stats */}
-            <div
-              className={`mt-14 grid grid-cols-2 sm:grid-cols-4 gap-4 transition-all duration-1000 delay-600 ${
-                isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
-              }`}
-            >
-              <div className="group relative p-5 bg-gradient-to-br from-white/90 to-white/70 dark:from-gray-800/90 dark:to-gray-800/70 backdrop-blur-xl border border-gray-200/50 dark:border-gray-700/50 rounded-2xl hover:border-blue-400/60 dark:hover:border-blue-400/60 transition-all duration-300 transform hover:scale-105 hover:shadow-xl overflow-hidden">
+            <div ref={statsRef} className="mt-14 grid grid-cols-2 sm:grid-cols-4 gap-4">
+              <div data-stat-card className="group relative p-5 bg-gradient-to-br from-white/90 to-white/70 dark:from-gray-800/90 dark:to-gray-800/70 backdrop-blur-xl border border-gray-200/50 dark:border-gray-700/50 rounded-2xl hover:border-blue-400/60 dark:hover:border-blue-400/60 transition-all duration-300 transform hover:scale-105 hover:shadow-xl overflow-hidden">
                 <div className="absolute inset-0 bg-gradient-to-br from-blue-500/10 to-indigo-500/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                 <div className="relative flex flex-col items-center space-y-3">
                   <div className="p-3 bg-gradient-to-br from-blue-500/20 to-indigo-500/20 rounded-xl group-hover:scale-110 group-hover:rotate-6 transition-all duration-300">
@@ -242,7 +239,7 @@ export const Hero: React.FC = () => {
                 </div>
               </div>
 
-              <div className="group relative p-5 bg-gradient-to-br from-white/90 to-white/70 dark:from-gray-800/90 dark:to-gray-800/70 backdrop-blur-xl border border-gray-200/50 dark:border-gray-700/50 rounded-2xl hover:border-teal-400/60 dark:hover:border-teal-400/60 transition-all duration-300 transform hover:scale-105 hover:shadow-xl overflow-hidden">
+              <div data-stat-card className="group relative p-5 bg-gradient-to-br from-white/90 to-white/70 dark:from-gray-800/90 dark:to-gray-800/70 backdrop-blur-xl border border-gray-200/50 dark:border-gray-700/50 rounded-2xl hover:border-teal-400/60 dark:hover:border-teal-400/60 transition-all duration-300 transform hover:scale-105 hover:shadow-xl overflow-hidden">
                 <div className="absolute inset-0 bg-gradient-to-br from-teal-500/10 to-cyan-500/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                 <div className="relative flex flex-col items-center space-y-3">
                   <div className="p-3 bg-gradient-to-br from-teal-500/20 to-cyan-500/20 rounded-xl group-hover:scale-110 group-hover:rotate-6 transition-all duration-300">
@@ -253,7 +250,7 @@ export const Hero: React.FC = () => {
                 </div>
               </div>
 
-              <div className="group relative p-5 bg-gradient-to-br from-white/90 to-white/70 dark:from-gray-800/90 dark:to-gray-800/70 backdrop-blur-xl border border-gray-200/50 dark:border-gray-700/50 rounded-2xl hover:border-purple-400/60 dark:hover:border-purple-400/60 transition-all duration-300 transform hover:scale-105 hover:shadow-xl overflow-hidden">
+              <div data-stat-card className="group relative p-5 bg-gradient-to-br from-white/90 to-white/70 dark:from-gray-800/90 dark:to-gray-800/70 backdrop-blur-xl border border-gray-200/50 dark:border-gray-700/50 rounded-2xl hover:border-purple-400/60 dark:hover:border-purple-400/60 transition-all duration-300 transform hover:scale-105 hover:shadow-xl overflow-hidden">
                 <div className="absolute inset-0 bg-gradient-to-br from-purple-500/10 to-pink-500/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                 <div className="relative flex flex-col items-center space-y-3">
                   <div className="p-3 bg-gradient-to-br from-purple-500/20 to-pink-500/20 rounded-xl group-hover:scale-110 group-hover:rotate-6 transition-all duration-300">
@@ -264,7 +261,7 @@ export const Hero: React.FC = () => {
                 </div>
               </div>
 
-              <div className="group relative p-5 bg-gradient-to-br from-white/90 to-white/70 dark:from-gray-800/90 dark:to-gray-800/70 backdrop-blur-xl border border-gray-200/50 dark:border-gray-700/50 rounded-2xl hover:border-orange-400/60 dark:hover:border-orange-400/60 transition-all duration-300 transform hover:scale-105 hover:shadow-xl overflow-hidden">
+              <div data-stat-card className="group relative p-5 bg-gradient-to-br from-white/90 to-white/70 dark:from-gray-800/90 dark:to-gray-800/70 backdrop-blur-xl border border-gray-200/50 dark:border-gray-700/50 rounded-2xl hover:border-orange-400/60 dark:hover:border-orange-400/60 transition-all duration-300 transform hover:scale-105 hover:shadow-xl overflow-hidden">
                 <div className="absolute inset-0 bg-gradient-to-br from-orange-500/10 to-red-500/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                 <div className="relative flex flex-col items-center space-y-3">
                   <div className="p-3 bg-gradient-to-br from-orange-500/20 to-red-500/20 rounded-xl group-hover:scale-110 group-hover:rotate-6 transition-all duration-300">
@@ -301,7 +298,7 @@ export const Hero: React.FC = () => {
           0%, 100% { background-position: 0% 50%; }
           50% { background-position: 100% 50%; }
         }
-        
+
         .animate-gradient {
           animation: gradient 6s ease infinite;
         }
@@ -311,7 +308,7 @@ export const Hero: React.FC = () => {
           25% { transform: rotate(20deg); }
           75% { transform: rotate(-15deg); }
         }
-        
+
         .animate-wave {
           animation: wave 2s ease-in-out infinite;
           display: inline-block;
@@ -322,7 +319,7 @@ export const Hero: React.FC = () => {
           from { transform: rotate(0deg); }
           to { transform: rotate(360deg); }
         }
-        
+
         .animate-spin-slow {
           animation: spin-slow 8s linear infinite;
         }
@@ -331,9 +328,20 @@ export const Hero: React.FC = () => {
           0%, 100% { transform: translateY(0); }
           50% { transform: translateY(-10px); }
         }
-        
+
         .animate-bounce-slow {
           animation: bounce-slow 3s ease-in-out infinite;
+        }
+
+        @keyframes float {
+          0%, 100% { transform: translateY(0px) translateX(0px); }
+          25% { transform: translateY(-20px) translateX(10px); }
+          50% { transform: translateY(-40px) translateX(-10px); }
+          75% { transform: translateY(-20px) translateX(15px); }
+        }
+
+        .animate-float {
+          animation: float 6s ease-in-out infinite;
         }
       `}</style>
     </section>
