@@ -338,3 +338,44 @@ export interface DashboardStats {
   total_profile_views: number;
   total_chatbot_conversations: number;
 }
+
+// Experience Database Type
+export interface ExperienceDB {
+  id: string;
+  company: string;
+  position: string;
+  location?: string;
+  start_date: string;
+  end_date?: string;
+  current: boolean;
+  description: string;
+  responsibilities: string[];
+  technologies: string[];
+  employment_type: 'full-time' | 'part-time' | 'contract' | 'internship' | 'freelance';
+  sort_order: number;
+  published: boolean;
+  created_at: string;
+  updated_at: string;
+}
+
+export interface ExperienceInput {
+  company: string;
+  position: string;
+  location?: string;
+  start_date: string;
+  end_date?: string;
+  current?: boolean;
+  description: string;
+  responsibilities?: string[];
+  technologies?: string[];
+  employment_type?: 'full-time' | 'part-time' | 'contract' | 'internship' | 'freelance';
+  sort_order?: number;
+  published?: boolean;
+}
+
+// Auth types
+export interface AuthUser {
+  id: string;
+  email: string;
+  created_at: string;
+}
