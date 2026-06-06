@@ -27,11 +27,16 @@ export interface ChatbotResponse {
 }
 
 export interface PortfolioContext {
-  personalInfo: any;
-  skills: any[];
-  projects: any[];
+  personalInfo: Record<string, unknown>;
+  skills: Array<Record<string, unknown>>;
+  projects: Array<Record<string, unknown>>;
   experience: string[];
   education: string[];
   achievements: string[];
   availability: string;
+}
+
+export interface ConversationMessage {
+  role: 'user' | 'assistant' | 'system';
+  content: string;
 }

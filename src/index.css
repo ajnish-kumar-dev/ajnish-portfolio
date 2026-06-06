@@ -1,9 +1,44 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;600&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-/* Custom CSS Variables for Theme Support */
+/* Professional Typography System */
 :root {
+  /* Font families */
+  --font-primary: 'Inter', system-ui, -apple-system, sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+
+  /* Base sizing */
+  --type-scale: 1.125; /* Major Third */
+
+  /* Font sizes - Perfect Fifth ratio */
+  --text-xs: 0.75rem;           /* 12px */
+  --text-sm: 0.875rem;          /* 14px */
+  --text-base: 1rem;            /* 16px */
+  --text-lg: 1.125rem;          /* 18px */
+  --text-xl: 1.265rem;          /* 20.24px */
+  --text-2xl: 1.424rem;         /* 22.78px */
+  --text-3xl: 1.602rem;         /* 25.63px */
+  --text-4xl: 1.802rem;         /* 28.84px */
+  --text-5xl: 2.027rem;         /* 32.44px */
+  --text-6xl: 2.281rem;         /* 36.49px */
+  --text-7xl: 2.566rem;         /* 41.06px */
+
+  /* Line heights for different text sizes */
+  --line-height-tight: 1.25;
+  --line-height-snug: 1.375;
+  --line-height-normal: 1.5;
+  --line-height-relaxed: 1.625;
+  --line-height-loose: 2;
+
+  /* Letter spacing */
+  --letter-spacing-tight: -0.02em;
+  --letter-spacing-normal: 0;
+  --letter-spacing-wide: 0.04em;
+
+  /* Custom CSS Variables for Theme Support */
   --toast-bg: white;
   --toast-color: black;
   --toast-border: #e5e7eb;
@@ -14,6 +49,249 @@
   --toast-color: white;
   --toast-border: #4b5563;
 }
+
+/* Professional Typography Base */
+body {
+  font-family: var(--font-primary);
+  font-size: var(--text-base);
+  line-height: var(--line-height-normal);
+  letter-spacing: var(--letter-spacing-normal);
+  color: #1f2937;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+.dark body {
+  color: #f3f4f6;
+}
+
+/* Heading Styles with Professional Typography */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-primary);
+  line-height: var(--line-height-tight);
+  letter-spacing: var(--letter-spacing-tight);
+  font-weight: 700;
+  margin: 0;
+}
+
+/* H1: Display/Hero */
+h1, .h1 {
+  font-size: var(--text-7xl);
+  font-weight: 900;
+  letter-spacing: var(--letter-spacing-tight);
+  line-height: 1.2;
+  margin-bottom: 1.5rem;
+}
+
+@media (max-width: 768px) {
+  h1, .h1 {
+    font-size: var(--text-5xl);
+  }
+}
+
+/* H2: Section Heading */
+h2, .h2 {
+  font-size: var(--text-5xl);
+  font-weight: 800;
+  letter-spacing: var(--letter-spacing-tight);
+  line-height: 1.25;
+  margin-bottom: 1.5rem;
+}
+
+@media (max-width: 768px) {
+  h2, .h2 {
+    font-size: var(--text-4xl);
+  }
+}
+
+/* H3: Subsection */
+h3, .h3 {
+  font-size: var(--text-3xl);
+  font-weight: 700;
+  letter-spacing: var(--letter-spacing-normal);
+  line-height: 1.375;
+  margin-bottom: 1rem;
+}
+
+@media (max-width: 768px) {
+  h3, .h3 {
+    font-size: var(--text-2xl);
+  }
+}
+
+/* H4: Card/Component Heading */
+h4, .h4 {
+  font-size: var(--text-2xl);
+  font-weight: 700;
+  line-height: 1.375;
+  margin-bottom: 0.75rem;
+}
+
+/* H5: Label/Small Heading */
+h5, .h5 {
+  font-size: var(--text-lg);
+  font-weight: 600;
+  line-height: 1.5;
+  margin-bottom: 0.5rem;
+  text-transform: uppercase;
+  letter-spacing: var(--letter-spacing-wide);
+}
+
+/* H6: Tiny Heading */
+h6, .h6 {
+  font-size: var(--text-sm);
+  font-weight: 600;
+  line-height: 1.5;
+  margin-bottom: 0.5rem;
+  text-transform: uppercase;
+  letter-spacing: var(--letter-spacing-wide);
+}
+
+/* Paragraph Styles */
+p {
+  margin: 0 0 1rem 0;
+  line-height: var(--line-height-relaxed);
+}
+
+p:last-child {
+  margin-bottom: 0;
+}
+
+/* Large paragraph */
+p.text-lg {
+  font-size: var(--text-lg);
+  line-height: var(--line-height-relaxed);
+}
+
+/* Small paragraph */
+p.text-sm {
+  font-size: var(--text-sm);
+  line-height: var(--line-height-normal);
+}
+
+/* List styles */
+ul, ol {
+  margin-bottom: 1rem;
+  padding-left: 1.5rem;
+  line-height: var(--line-height-relaxed);
+}
+
+li {
+  margin-bottom: 0.5rem;
+}
+
+/* Links with professional styling */
+a {
+  color: #2563eb;
+  text-decoration: none;
+  transition: color 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  font-weight: 500;
+}
+
+a:hover {
+  color: #1d4ed8;
+  text-decoration: underline;
+}
+
+.dark a {
+  color: #60a5fa;
+}
+
+.dark a:hover {
+  color: #93c5fd;
+}
+
+/* Code typography */
+code {
+  font-family: var(--font-mono);
+  font-size: 0.9em;
+  background: #f3f4f6;
+  padding: 0.125rem 0.25rem;
+  border-radius: 0.25rem;
+  letter-spacing: -0.01em;
+}
+
+.dark code {
+  background: #1f2937;
+  color: #d1d5db;
+}
+
+pre {
+  font-family: var(--font-mono);
+  font-size: var(--text-sm);
+  line-height: 1.5;
+  overflow-x: auto;
+  padding: 1rem;
+  background: #f9fafb;
+  border-radius: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.dark pre {
+  background: #111827;
+  color: #f3f4f6;
+}
+
+/* Typography utilities */
+.text-balance {
+  text-wrap: balance;
+}
+
+.text-pretty {
+  text-wrap: pretty;
+}
+
+.prose {
+  font-size: var(--text-base);
+  line-height: var(--line-height-relaxed);
+}
+
+.prose h1 {
+  font-size: var(--text-5xl);
+}
+
+.prose h2 {
+  font-size: var(--text-4xl);
+  margin-top: 2rem;
+}
+
+.prose h3 {
+  font-size: var(--text-2xl);
+  margin-top: 1.5rem;
+}
+
+.prose p {
+  margin-bottom: 1.25rem;
+}
+
+.prose ul, .prose ol {
+  margin-bottom: 1.25rem;
+}
+
+/* Font weight utilities */
+.font-light { font-weight: 300; }
+.font-normal { font-weight: 400; }
+.font-medium { font-weight: 500; }
+.font-semibold { font-weight: 600; }
+.font-bold { font-weight: 700; }
+.font-extrabold { font-weight: 800; }
+.font-black { font-weight: 900; }
+
+/* Font style utilities */
+.italic { font-style: italic; }
+.not-italic { font-style: normal; }
+.uppercase { text-transform: uppercase; }
+.lowercase { text-transform: lowercase; }
+.capitalize { text-transform: capitalize; }
+.normal-case { text-transform: none; }
+
+/* Leading/Line-height utilities */
+.leading-tight { line-height: var(--line-height-tight); }
+.leading-snug { line-height: var(--line-height-snug); }
+.leading-normal { line-height: var(--line-height-normal); }
+.leading-relaxed { line-height: var(--line-height-relaxed); }
+.leading-loose { line-height: var(--line-height-loose); }
 
 /* Custom Animations */
 @keyframes fade-in {
@@ -705,4 +983,490 @@ html {
   100% {
     background-position: -200% 0;
   }
+}
+
+/* Section Transition Animations */
+@keyframes section-fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.section-animate {
+  animation: section-fade-in 0.6s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+/* Smooth page transitions */
+@keyframes page-enter {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+body {
+  animation: page-enter 0.4s ease-out;
+}
+
+/* Enhanced hover effects for interactive elements */
+button, a, [role="button"] {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Staggered animations for list items */
+.stagger-animation > * {
+  animation: section-fade-in 0.6s cubic-bezier(0.4, 0, 0.2, 1) backwards;
+}
+
+.stagger-animation > *:nth-child(1) { animation-delay: 0.1s; }
+.stagger-animation > *:nth-child(2) { animation-delay: 0.2s; }
+.stagger-animation > *:nth-child(3) { animation-delay: 0.3s; }
+.stagger-animation > *:nth-child(4) { animation-delay: 0.4s; }
+.stagger-animation > *:nth-child(5) { animation-delay: 0.5s; }
+.stagger-animation > *:nth-child(n+6) { animation-delay: 0.6s; }
+
+/* Smooth scroll snap for sections */
+html {
+  scroll-snap-type: y proximity;
+}
+
+section {
+  scroll-snap-align: start;
+  scroll-snap-stop: auto;
+}
+
+/* Enhanced backdrop blur for modals and overlays */
+.backdrop-blur-xl {
+  backdrop-filter: blur(20px) saturate(180%);
+}
+
+/* Smooth color transitions */
+.text-transition {
+  transition: color 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.bg-transition {
+  transition: background-color 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Enhanced button states */
+.btn-primary {
+  @apply relative inline-block px-6 py-3 font-semibold text-white transition-all duration-300 overflow-hidden;
+}
+
+.btn-primary::before {
+  @apply absolute inset-0 bg-gradient-to-r from-transparent via-white to-transparent opacity-0 transition-opacity duration-300;
+  content: '';
+}
+
+.btn-primary:hover::before {
+  @apply opacity-20;
+}
+
+/* Smooth reveal animations */
+@keyframes reveal {
+  from {
+    opacity: 0;
+    clip-path: inset(0 100% 0 0);
+  }
+  to {
+    opacity: 1;
+    clip-path: inset(0 0 0 0);
+  }
+}
+
+.reveal {
+  animation: reveal 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Smooth scale animations */
+@keyframes scale-in {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.scale-in {
+  animation: scale-in 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Smooth rotate animations */
+@keyframes rotate-in {
+  from {
+    opacity: 0;
+    transform: rotate(-5deg) scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: rotate(0deg) scale(1);
+  }
+}
+
+.rotate-in {
+  animation: rotate-in 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Smooth slide animations */
+@keyframes slide-left {
+  from {
+    opacity: 0;
+    transform: translateX(100px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slide-right {
+  from {
+    opacity: 0;
+    transform: translateX(-100px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.slide-left {
+  animation: slide-left 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.slide-right {
+  animation: slide-right 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Professional & Sophisticated Animations */
+
+/* Elegant number counter animation */
+@keyframes counter-up {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.counter-up {
+  animation: counter-up 0.6s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+/* Smooth text reveal animation */
+@keyframes text-reveal {
+  from {
+    opacity: 0;
+    transform: translateY(20px) scaleY(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scaleY(1);
+  }
+}
+
+.text-reveal {
+  animation: text-reveal 0.7s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+}
+
+/* Sophisticated glow effect */
+@keyframes glow {
+  0%, 100% {
+    text-shadow: 0 0 5px rgba(59, 130, 246, 0.5);
+  }
+  50% {
+    text-shadow: 0 0 20px rgba(59, 130, 246, 0.8), 0 0 30px rgba(59, 130, 246, 0.6);
+  }
+}
+
+.text-glow {
+  animation: glow 3s ease-in-out infinite;
+}
+
+/* Smooth underline animation */
+@keyframes underline-expand {
+  from {
+    background-position: 0% 100%;
+    background-size: 0% 2px;
+  }
+  to {
+    background-position: 100% 100%;
+    background-size: 100% 2px;
+  }
+}
+
+.underline-animate {
+  background-repeat: no-repeat;
+  background-position: 0% 100%;
+  animation: underline-expand 0.6s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+/* Card entrance animation with stagger */
+@keyframes card-entrance {
+  0% {
+    opacity: 0;
+    transform: translateY(30px) rotateX(10deg);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) rotateX(0);
+  }
+}
+
+.card-entrance {
+  animation: card-entrance 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+}
+
+/* Sophisticated pulse with color shift */
+@keyframes sophisticated-pulse {
+  0%, 100% {
+    opacity: 1;
+    box-shadow: 0 0 0 0 rgba(59, 130, 246, 0.7);
+  }
+  50% {
+    opacity: 0.8;
+    box-shadow: 0 0 0 10px rgba(59, 130, 246, 0);
+  }
+}
+
+.sophisticated-pulse {
+  animation: sophisticated-pulse 2.5s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+/* Smooth scale-in with perspective */
+@keyframes perspective-scale {
+  from {
+    opacity: 0;
+    transform: perspective(1200px) rotateY(45deg) scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: perspective(1200px) rotateY(0) scale(1);
+  }
+}
+
+.perspective-scale {
+  animation: perspective-scale 0.8s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+}
+
+/* Elegant blur-in effect */
+@keyframes blur-in {
+  from {
+    opacity: 0;
+    filter: blur(10px);
+    transform: translateZ(0);
+  }
+  to {
+    opacity: 1;
+    filter: blur(0);
+    transform: translateZ(0);
+  }
+}
+
+.blur-in {
+  animation: blur-in 0.7s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+/* Sophisticated clip-path reveal */
+@keyframes clip-reveal {
+  from {
+    clip-path: polygon(0 0, 0 0, 0 100%, 0 100%);
+    opacity: 0;
+  }
+  to {
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+    opacity: 1;
+  }
+}
+
+.clip-reveal {
+  animation: clip-reveal 0.8s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+/* Smooth shadow elevation animation */
+@keyframes shadow-elevation {
+  0% {
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+    transform: translateY(0);
+  }
+  50% {
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transform: translateY(-2px);
+  }
+  100% {
+    box-shadow: 0 10px 15px rgba(0, 0, 0, 0.15);
+    transform: translateY(-4px);
+  }
+}
+
+.shadow-elevation {
+  animation: shadow-elevation 0.6s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+/* Sophisticated gradient shift animation */
+@keyframes gradient-shift-smooth {
+  0%, 100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+.gradient-shift-smooth {
+  background-size: 200% 200%;
+  animation: gradient-shift-smooth 4s ease infinite;
+}
+
+/* Elegant line animation from left */
+@keyframes line-from-left {
+  from {
+    transform: scaleX(0);
+    transform-origin: left;
+    opacity: 0;
+  }
+  to {
+    transform: scaleX(1);
+    transform-origin: left;
+    opacity: 1;
+  }
+}
+
+.line-from-left {
+  animation: line-from-left 0.6s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+/* Smooth icon spin with fade */
+@keyframes icon-spin-fade {
+  0% {
+    opacity: 0;
+    transform: rotate(-20deg) scale(0.8);
+  }
+  100% {
+    opacity: 1;
+    transform: rotate(0) scale(1);
+  }
+}
+
+.icon-spin-fade {
+  animation: icon-spin-fade 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+}
+
+/* Sophisticated stagger effect for lists */
+.stagger-item {
+  opacity: 0;
+  animation: text-reveal 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+}
+
+.stagger-item:nth-child(1) { animation-delay: 0.05s; }
+.stagger-item:nth-child(2) { animation-delay: 0.1s; }
+.stagger-item:nth-child(3) { animation-delay: 0.15s; }
+.stagger-item:nth-child(4) { animation-delay: 0.2s; }
+.stagger-item:nth-child(5) { animation-delay: 0.25s; }
+.stagger-item:nth-child(6) { animation-delay: 0.3s; }
+.stagger-item:nth-child(n+7) { animation-delay: 0.35s; }
+
+/* Smooth element hover lift */
+.hover-lift {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.hover-lift:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+}
+
+/* Sophisticated gradient text animation */
+@keyframes gradient-text-animate {
+  0%, 100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+.gradient-text-animate {
+  background-size: 200% 200%;
+  animation: gradient-text-animate 3s ease infinite;
+}
+
+/* Smooth height transition for collapsible elements */
+@keyframes collapse-open {
+  from {
+    height: 0;
+    opacity: 0;
+    overflow: hidden;
+  }
+  to {
+    height: auto;
+    opacity: 1;
+    overflow: visible;
+  }
+}
+
+.collapse-open {
+  animation: collapse-open 0.4s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+/* Elegant progress bar animation */
+@keyframes progress-fill {
+  0% {
+    width: 0%;
+  }
+  100% {
+    width: var(--progress-value, 100%);
+  }
+}
+
+.progress-fill {
+  animation: progress-fill 1.2s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+}
+
+/* Sophisticated float animation with rotation */
+@keyframes float-rotate {
+  0%, 100% {
+    transform: translateY(0) rotate(0deg);
+  }
+  25% {
+    transform: translateY(-15px) rotate(5deg);
+  }
+  50% {
+    transform: translateY(-30px) rotate(0deg);
+  }
+  75% {
+    transform: translateY(-15px) rotate(-5deg);
+  }
+}
+
+.float-rotate {
+  animation: float-rotate 6s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+}
+
+/* Smooth blink with gradient */
+@keyframes elegant-blink {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.4;
+  }
+}
+
+.elegant-blink {
+  animation: elegant-blink 3s cubic-bezier(0.4, 0, 0.6, 1) infinite;
 }

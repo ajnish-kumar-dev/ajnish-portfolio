@@ -1,5 +1,5 @@
-import React from 'react';
-import { Quote, Star } from 'lucide-react';
+import React, { useState } from 'react';
+import { Quote, Star, ChevronLeft, ChevronRight } from 'lucide-react';
 import { useIntersectionObserver } from '../../hooks/useIntersectionObserver';
 
 interface Testimonial {
@@ -41,6 +41,15 @@ const testimonials: Testimonial[] = [
 
 export const Testimonials: React.FC = () => {
   const [ref, isVisible] = useIntersectionObserver({ threshold: 0.1 });
+  const [activeIndex, setActiveIndex] = useState(0);
+
+  const handlePrev = () => {
+    setActiveIndex((prev) => (prev === 0 ? testimonials.length - 1 : prev - 1));
+  };
+
+  const handleNext = () => {
+    setActiveIndex((prev) => (prev === testimonials.length - 1 ? 0 : prev + 1));
+  };
 
   return (
     <section id="testimonials" className="py-20 bg-gradient-to-b from-white via-blue-50/30 to-white dark:from-gray-900 dark:via-blue-900/10 dark:to-gray-900">
@@ -75,15 +84,53 @@ export const Testimonials: React.FC = () => {
           </p>
         </div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {testimonials.map((testimonial, index) => (
-            <TestimonialCard
-              key={testimonial.id}
-              testimonial={testimonial}
-              index={index}
-              isVisible={isVisible}
-            />
-          ))}
+        <div className="relative">
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {testimonials.map((testimonial, index) => (
+              <TestimonialCard
+                key={testimonial.id}
+                testimonial={testimonial}
+                index={index}
+                isVisible={isVisible}
+                isActive={index === activeIndex}
+              />
+            ))}
+          </div>
+
+          {testimonials.length > 3 && (
+            <div className="flex items-center justify-center gap-4 mt-12">
+              <button
+                onClick={handlePrev}
+                className="p-3 rounded-full bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 hover:bg-blue-50 dark:hover:bg-gray-700 hover:border-blue-400 dark:hover:border-blue-400 transition-all duration-300 transform hover:scale-110 active:scale-95"
+                aria-label="Previous testimonial"
+              >
+                <ChevronLeft size={20} className="text-gray-700 dark:text-gray-300" />
+              </button>
+
+              <div className="flex gap-2">
+                {testimonials.map((_, index) => (
+                  <button
+                    key={index}
+                    onClick={() => setActiveIndex(index)}
+                    className={`w-2.5 h-2.5 rounded-full transition-all duration-300 ${
+                      index === activeIndex
+                        ? 'bg-blue-600 w-8'
+                        : 'bg-gray-300 dark:bg-gray-600 hover:bg-gray-400 dark:hover:bg-gray-500'
+                    }`}
+                    aria-label={`Go to testimonial ${index + 1}`}
+                  />
+                ))}
+              </div>
+
+              <button
+                onClick={handleNext}
+                className="p-3 rounded-full bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 hover:bg-blue-50 dark:hover:bg-gray-700 hover:border-blue-400 dark:hover:border-blue-400 transition-all duration-300 transform hover:scale-110 active:scale-95"
+                aria-label="Next testimonial"
+              >
+                <ChevronRight size={20} className="text-gray-700 dark:text-gray-300" />
+              </button>
+            </div>
+          )}
         </div>
       </div>
     </section>
@@ -94,15 +141,18 @@ interface TestimonialCardProps {
   testimonial: Testimonial;
   index: number;
   isVisible: boolean;
+  isActive: boolean;
 }
 
-const TestimonialCard: React.FC<TestimonialCardProps> = ({ testimonial, index, isVisible }) => {
+const TestimonialCard: React.FC<TestimonialCardProps> = ({ testimonial, index, isVisible, isActive }) => {
   const [cardRef, isCardVisible] = useIntersectionObserver({ threshold: 0.2 });
 
   return (
     <div
       ref={cardRef}
       className={`group bg-white dark:bg-gray-800/50 rounded-2xl p-8 border border-gray-200 dark:border-gray-700/50 hover:shadow-2xl hover:shadow-blue-500/10 dark:hover:shadow-blue-500/5 hover:border-gray-300 dark:hover:border-gray-600 transition-all duration-500 transform hover:-translate-y-2 ${
+        isActive ? 'ring-2 ring-blue-500 shadow-xl shadow-blue-500/20' : ''
+      } ${
         isVisible ? `opacity-100 translate-y-0 delay-${index * 100}` : 'opacity-0 translate-y-8'
       }`}
     >

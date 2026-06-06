@@ -1,4 +1,4 @@
-import { ChatbotConfig, ChatbotResponse, PortfolioContext } from '../types/chatbot';
+import { ChatbotConfig, ChatbotResponse, PortfolioContext, ConversationMessage } from '../types/chatbot';
 import { personalInfo, skills, projects } from '../data/portfolio';
 
 // Security: Use environment variables for sensitive data
@@ -24,7 +24,7 @@ class ChatbotService {
   private requestQueue: Map<string, AbortController> = new Map();
   private rateLimitTracker: { requests: number; resetTime: number } = { requests: 0, resetTime: 0 };
   private readonly MAX_REQUESTS_PER_MINUTE = 20;
-  private conversationHistory: Array<{ role: string; content: string }> = [];
+  private conversationHistory: ConversationMessage[] = [];
   private userPreferences: { askedTopics: Set<string> } = { askedTopics: new Set() };
 
   constructor() {
@@ -160,7 +160,7 @@ Remember: You represent a dedicated student who is passionate about programming 
   }
 
   // Enhanced error handling with retry logic
-  private async makeApiRequest(messages: any[], retryCount = 0): Promise<any> {
+  private async makeApiRequest(messages: ConversationMessage[], retryCount = 0): Promise<Record<string, unknown>> {
     if (!this.config) {
       throw new Error('Chatbot API is not configured');
     }
@@ -186,7 +186,7 @@ Remember: You represent a dedicated student who is passionate about programming 
       });
 
       if (!response.ok) {
-        const errorData = await response.json().catch(() => ({}));
+        const errorData = await response.json().catch(() => ({ error: 'Unknown error' })) as Record<string, unknown>;
         
         switch (response.status) {
           case 401:
