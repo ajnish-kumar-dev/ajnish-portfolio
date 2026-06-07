@@ -173,20 +173,23 @@ export function ChatbotWidget() {
       <div className="fixed bottom-4 right-4 sm:bottom-6 sm:right-6 z-50">
         <button
           onClick={() => setIsOpen(true)}
-          className="group relative bg-gradient-to-r from-blue-600 via-teal-600 to-cyan-600 text-white p-4 rounded-full shadow-2xl hover:shadow-blue-500/30 transform hover:scale-110 transition-all duration-300 animate-pulse hover:animate-none"
+          className="group relative bg-gradient-to-br from-blue-600 via-indigo-600 to-teal-600 text-white p-4 rounded-full shadow-2xl hover:shadow-blue-500/50 transform hover:scale-110 transition-all duration-300 active:scale-95"
           aria-label="Open chat assistant"
         >
-          <MessageCircle size={24} className="relative z-10" />
+          <MessageCircle size={24} className="relative z-10 group-hover:rotate-12 transition-transform duration-300" />
 
-          <div className="absolute inset-0 rounded-full bg-gradient-to-r from-blue-500 to-cyan-500 opacity-75 animate-ping"></div>
+          <div className="absolute inset-0 rounded-full bg-gradient-to-br from-blue-500 to-teal-500 opacity-0 group-hover:opacity-20 animate-pulse transition-opacity duration-300"></div>
 
-          <div className="absolute -top-1 -right-1 w-5 h-5 bg-gradient-to-r from-red-500 to-pink-500 rounded-full flex items-center justify-center animate-bounce">
-            <Sparkles size={12} className="text-white" />
+          <div className="absolute -top-2 -right-2 w-6 h-6 bg-gradient-to-br from-red-500 via-pink-500 to-rose-500 rounded-full flex items-center justify-center animate-bounce shadow-lg">
+            <Sparkles size={14} className="text-white" />
           </div>
 
-          <div className="absolute bottom-full right-0 mb-3 px-3 py-2 bg-gray-900 dark:bg-gray-700 text-white text-sm rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-200 whitespace-nowrap pointer-events-none shadow-xl">
-            Chat with Ajnish's AI Assistant
-            <div className="absolute top-full right-4 w-0 h-0 border-l-4 border-r-4 border-t-4 border-transparent border-t-gray-900 dark:border-t-gray-700"></div>
+          <div className="absolute bottom-full right-0 mb-3 px-4 py-2 bg-gray-900 dark:bg-gray-800 text-white text-sm rounded-xl opacity-0 group-hover:opacity-100 transition-all duration-300 whitespace-nowrap pointer-events-none shadow-2xl transform -translate-y-1 group-hover:translate-y-0">
+            <span className="flex items-center gap-2">
+              <Bot size={14} />
+              Chat with AI Assistant
+            </span>
+            <div className="absolute top-full right-4 w-2 h-2 bg-gray-900 dark:bg-gray-800 transform rotate-45"></div>
           </div>
         </button>
       </div>
@@ -195,11 +198,11 @@ export function ChatbotWidget() {
 
   return (
     <div className="fixed bottom-4 right-4 sm:bottom-6 sm:right-6 z-50">
-      <div className={`bg-white dark:bg-gray-800 rounded-2xl shadow-2xl border border-gray-200 dark:border-gray-700 transition-all duration-300 overflow-hidden ${
+      <div className={`bg-white dark:bg-gray-800 rounded-3xl shadow-2xl border border-gray-200 dark:border-gray-700 transition-all duration-500 overflow-hidden backdrop-blur-sm ${
         isMinimized ? 'w-80 h-16' : 'w-[90vw] sm:w-96 h-[85vh] sm:h-[600px] max-w-md max-h-[600px]'
       }`}>
-        <div className="flex items-center justify-between p-4 border-b border-gray-200 dark:border-gray-700 bg-gradient-to-r from-blue-600 via-teal-600 to-cyan-600 text-white rounded-t-2xl relative overflow-hidden">
-          <div className="absolute inset-0 bg-gradient-to-r from-blue-600/20 via-teal-600/20 to-cyan-600/20 animate-pulse"></div>
+        <div className="flex items-center justify-between p-4 border-b border-gray-200 dark:border-gray-700 bg-gradient-to-br from-blue-600 via-indigo-600 to-teal-600 text-white rounded-t-3xl relative overflow-hidden group">
+          <div className="absolute inset-0 bg-gradient-to-br from-blue-600/30 via-indigo-600/30 to-teal-600/30 group-hover:from-blue-600/40 group-hover:via-indigo-600/40 group-hover:to-teal-600/40 transition-all duration-300"></div>
 
           <div className="flex items-center space-x-3 relative z-10">
             <div className="relative w-10 h-10 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center border border-white/30 shadow-lg">

@@ -20,6 +20,7 @@ interface ContactResponse {
 }
 
 Deno.serve(async (req: Request) => {
+  // Preflight CORS
   if (req.method === "OPTIONS") {
     return new Response(null, {
       status: 200,
@@ -36,50 +37,53 @@ Deno.serve(async (req: Request) => {
     }
 
     if (req.method !== "POST") {
-      return new Response(
-        JSON.stringify({ success: false, message: "Method not allowed" }),
-        {
-          status: 405,
-          headers: { ...corsHeaders, "Content-Type": "application/json" },
-        }
-      );
+      const body: ContactResponse = {
+        success: false,
+        message: "Method not allowed",
+      };
+
+      return new Response(JSON.stringify(body), {
+        status: 405,
+        headers: { ...corsHeaders, "Content-Type": "application/json" },
+      });
     }
 
     const body: ContactRequest = await req.json();
 
+    // Basic validation
     if (!body.name || !body.email || !body.subject || !body.message) {
-      return new Response(
-        JSON.stringify({
-          success: false,
-          message: "Missing required fields",
-        }),
-        {
-          status: 400,
-          headers: { ...corsHeaders, "Content-Type": "application/json" },
-        }
-      );
+      const resp: ContactResponse = {
+        success: false,
+        message: "Missing required fields",
+      };
+
+      return new Response(JSON.stringify(resp), {
+        status: 400,
+        headers: { ...corsHeaders, "Content-Type": "application/json" },
+      });
     }
 
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (!emailRegex.test(body.email)) {
-      return new Response(
-        JSON.stringify({
-          success: false,
-          message: "Invalid email address",
-        }),
-        {
-          status: 400,
-          headers: { ...corsHeaders, "Content-Type": "application/json" },
-        }
-      );
+      const resp: ContactResponse = {
+        success: false,
+        message: "Invalid email address",
+      };
+
+      return new Response(JSON.stringify(resp), {
+        status: 400,
+        headers: { ...corsHeaders, "Content-Type": "application/json" },
+      });
     }
 
+    // Insert into contact_messages via REST
     const response = await fetch(`${supabaseUrl}/rest/v1/contact_messages`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
         apikey: supabaseKey,
         Authorization: `Bearer ${supabaseKey}`,
+        Prefer: "return=representation",
       },
       body: JSON.stringify({
         name: body.name.trim(),
@@ -91,13 +95,13 @@ Deno.serve(async (req: Request) => {
     });
 
     if (!response.ok) {
-      const error = await response.text();
-      console.error("Database error:", error);
+      const errorText = await response.text();
+      console.error("Database error:", errorText);
       throw new Error(`Database insertion failed: ${response.status}`);
     }
 
     const data = await response.json();
-    const messageId = data[0]?.id || "unknown";
+    const messageId = data?.[0]?.id ?? "unknown";
 
     const successResponse: ContactResponse = {
       success: true,
@@ -112,15 +116,14 @@ Deno.serve(async (req: Request) => {
   } catch (error) {
     console.error("Error:", error);
 
-    return new Response(
-      JSON.stringify({
-        success: false,
-        message: "An error occurred while processing your message. Please try again.",
-      }),
-      {
-        status: 500,
-        headers: { ...corsHeaders, "Content-Type": "application/json" },
-      }
-    );
+    const errorResponse: ContactResponse = {
+      success: false,
+      message: "An error occurred while processing your message. Please try again.",
+    };
+
+    return new Response(JSON.stringify(errorResponse), {
+      status: 500,
+      headers: { ...corsHeaders, "Content-Type": "application/json" },
+    });
   }
 });
