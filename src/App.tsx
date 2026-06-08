@@ -12,6 +12,7 @@ import { Testimonials } from './components/Sections/Testimonials';
 import { Contact } from './components/Sections/Contact';
 import { ChatbotWidget } from './components/Chatbot/ChatbotWidget';
 import { ScrollProgress } from './components/UI/ScrollProgress';
+import { MarketplaceCTA } from './components/Sections/MarketplaceCTA';
 import './index.css';
 
 function App() {
@@ -22,10 +23,10 @@ function App() {
 
         {/* Scroll Progress Indicator */}
         <ScrollProgress />
-        
+
         {/* Header */}
         <Header />
-        
+
         {/* Main Content */}
         <main className="relative">
           <Hero />
@@ -33,12 +34,13 @@ function App() {
           <Skills />
           <Projects />
           <Testimonials />
+          <MarketplaceCTA />
           <Contact />
         </main>
-        
+
         {/* Footer */}
         <Footer />
-        
+
         {/* Toast Notifications */}
         <Toaster
           position="top-right"
@@ -63,7 +65,7 @@ function App() {
             },
           }}
         />
-        
+
         {/* Chatbot Widget */}
         <ChatbotWidget />
       </div>
