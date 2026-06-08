@@ -379,3 +379,205 @@ export interface AuthUser {
   email: string;
   created_at: string;
 }
+
+// ============================================================================
+// MARKETPLACE TYPES
+// ============================================================================
+
+// User Profile
+export interface UserProfile {
+  id: string;
+  full_name?: string;
+  company?: string;
+  avatar_url?: string;
+  phone?: string;
+  address?: string;
+  city?: string;
+  state?: string;
+  country?: string;
+  postal_code?: string;
+  role: 'client' | 'admin';
+  created_at: string;
+  updated_at: string;
+}
+
+export interface UserProfileInput {
+  full_name?: string;
+  company?: string;
+  avatar_url?: string;
+  phone?: string;
+  address?: string;
+  city?: string;
+  state?: string;
+  country?: string;
+  postal_code?: string;
+}
+
+// Product
+export interface Product {
+  id: string;
+  name: string;
+  slug: string;
+  description: string;
+  short_description?: string;
+  category: string;
+  price: number;
+  compare_at_price?: number;
+  image_url?: string;
+  gallery_urls?: string[];
+  features?: string[];
+  status: 'active' | 'draft' | 'archived';
+  stock_quantity: number;
+  sku?: string;
+  metadata?: Record<string, unknown>;
+  created_at: string;
+  updated_at: string;
+}
+
+export interface ProductInput {
+  name: string;
+  slug?: string;
+  description: string;
+  short_description?: string;
+  category: string;
+  price: number;
+  compare_at_price?: number;
+  image_url?: string;
+  gallery_urls?: string[];
+  features?: string[];
+  status?: 'active' | 'draft' | 'archived';
+  stock_quantity?: number;
+  sku?: string;
+  metadata?: Record<string, unknown>;
+}
+
+// Order
+export interface Order {
+  id: string;
+  order_number: string;
+  user_id: string;
+  status: 'pending' | 'processing' | 'active' | 'completed' | 'cancelled' | 'refunded';
+  subtotal: number;
+  tax: number;
+  discount: number;
+  total: number;
+  coupon_code?: string;
+  billing_name: string;
+  billing_email: string;
+  billing_address?: string;
+  billing_city?: string;
+  billing_state?: string;
+  billing_country?: string;
+  billing_postal_code?: string;
+  payment_method?: string;
+  payment_status: 'pending' | 'paid' | 'failed' | 'refunded';
+  notes?: string;
+  created_at: string;
+  updated_at: string;
+  items?: OrderItem[];
+}
+
+export interface OrderItem {
+  id: string;
+  order_id: string;
+  product_id?: string;
+  product_name: string;
+  product_description?: string;
+  quantity: number;
+  unit_price: number;
+  total_price: number;
+  created_at: string;
+}
+
+export interface OrderInput {
+  billing_name: string;
+  billing_email: string;
+  billing_address?: string;
+  billing_city?: string;
+  billing_state?: string;
+  billing_country?: string;
+  billing_postal_code?: string;
+  payment_method?: string;
+  coupon_code?: string;
+  notes?: string;
+}
+
+// Invoice
+export interface Invoice {
+  id: string;
+  invoice_number: string;
+  order_id: string;
+  user_id: string;
+  status: 'draft' | 'sent' | 'paid' | 'cancelled';
+  due_date?: string;
+  paid_at?: string;
+  created_at: string;
+  updated_at: string;
+  order?: Order;
+}
+
+// Cart Item
+export interface CartItem {
+  id: string;
+  user_id: string;
+  product_id: string;
+  quantity: number;
+  created_at: string;
+  product?: Product;
+}
+
+// Coupon
+export interface Coupon {
+  id: string;
+  code: string;
+  description?: string;
+  discount_type: 'percentage' | 'fixed';
+  discount_value: number;
+  min_order_value?: number;
+  max_uses?: number;
+  current_uses: number;
+  valid_from?: string;
+  valid_until?: string;
+  active: boolean;
+  created_at: string;
+}
+
+// Product Review
+export interface ProductReview {
+  id: string;
+  product_id: string;
+  user_id: string;
+  rating: number;
+  title?: string;
+  review?: string;
+  verified: boolean;
+  helpful_count: number;
+  created_at: string;
+  updated_at: string;
+  user?: UserProfile;
+}
+
+export interface ProductReviewInput {
+  product_id: string;
+  rating: number;
+  title?: string;
+  review?: string;
+}
+
+// Dashboard Stats
+export interface MarketplaceStats {
+  total_orders: number;
+  total_revenue: number;
+  total_products: number;
+  total_clients: number;
+  pending_orders: number;
+  recent_orders: Order[];
+  top_products: Array<{ product: Product; sales: number }>;
+}
+
+export interface ClientStats {
+  total_orders: number;
+  total_spent: number;
+  active_orders: number;
+  pending_invoices: number;
+}
