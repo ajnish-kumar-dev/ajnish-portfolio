@@ -6,17 +6,18 @@ export const ScrollProgress: React.FC = () => {
   useEffect(() => {
     const handleScroll = () => {
       const totalHeight = document.documentElement.scrollHeight - window.innerHeight;
-      const progress = totalHeight > 0 ? (window.scrollY / totalHeight) * 100 : 0;
+      const progress = (window.scrollY / totalHeight) * 100;
       setScrollProgress(progress);
     };
+
     window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
   return (
-    <div className="fixed top-0 left-0 right-0 h-0.5 z-[100] bg-transparent">
+    <div className="fixed top-0 left-0 right-0 h-1 z-[100] bg-gray-200/30 dark:bg-gray-800/30">
       <div
-        className="h-full bg-gradient-to-r from-blue-600 via-sky-500 to-teal-500 transition-all duration-150 ease-out"
+        className="h-full bg-gradient-to-r from-blue-600 via-indigo-600 to-teal-600 transition-all duration-150 ease-out shadow-lg shadow-blue-500/50"
         style={{ width: `${scrollProgress}%` }}
       />
     </div>

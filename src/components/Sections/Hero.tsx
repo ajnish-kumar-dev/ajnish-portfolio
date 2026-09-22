@@ -1,47 +1,12 @@
-import { motion } from 'framer-motion';
-import { ArrowDown, Download, Mail, Code2, Zap, Trophy, Users, Github, Linkedin, Twitter, Sparkles } from 'lucide-react';
+import React from 'react';
+import { ArrowDown, Download, Mail, Code2, Zap, Trophy, Users, Sparkles, Github, Linkedin, Twitter } from 'lucide-react';
 import { useTypingAnimation } from '../../hooks/useTypingAnimation';
-import { useCountUp } from '../../hooks/useCountUp';
 import { useIntersectionObserver } from '../../hooks/useIntersectionObserver';
 import { personalInfo, typingTexts, stats } from '../../data/portfolio';
 
-const fadeUp = {
-  hidden: { opacity: 0, y: 24 },
-  visible: (delay: number) => ({
-    opacity: 1,
-    y: 0,
-    transition: { duration: 0.6, delay, ease: [0.25, 0.1, 0.25, 1] as const },
-  }),
-};
-
-function StatCard({ icon: Icon, value, suffix, label, color, delay }: {
-  icon: typeof Code2; value: number; suffix: string; label: string; color: string; delay: number;
-}) {
-  const count = useCountUp({ end: value, duration: 2200 });
-  return (
-    <motion.div
-      custom={delay}
-      variants={fadeUp}
-      initial="hidden"
-      animate="visible"
-      className="group relative p-5 bg-white/80 dark:bg-gray-800/60 backdrop-blur-xl border border-gray-200/60 dark:border-gray-700/50 rounded-2xl hover:border-blue-400/60 dark:hover:border-blue-400/40 hover:shadow-xl hover:shadow-blue-500/10 transition-all duration-300 overflow-hidden"
-    >
-      <div className={`absolute inset-0 bg-gradient-to-br ${color} opacity-0 group-hover:opacity-[0.06] transition-opacity duration-300`} />
-      <div className="relative flex flex-col items-center space-y-2.5">
-        <div className={`p-2.5 bg-gradient-to-br ${color} bg-opacity-10 rounded-xl group-hover:scale-110 transition-transform duration-300`}>
-          <Icon size={20} className="text-gray-700 dark:text-gray-200" />
-        </div>
-        <p className="text-2xl font-black text-gray-900 dark:text-white tabular-nums">
-          {count}{suffix}
-        </p>
-        <p className="text-xs font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wide">{label}</p>
-      </div>
-    </motion.div>
-  );
-}
-
 export const Hero: React.FC = () => {
-  const [ref, isVisible] = useIntersectionObserver({ threshold: 0.2 });
+  const [ref, isVisible] = useIntersectionObserver({ threshold: 0.3 });
+  const statsRef = React.useRef<HTMLDivElement>(null);
   const typingText = useTypingAnimation({
     texts: typingTexts,
     typeSpeed: 100,
@@ -54,232 +19,329 @@ export const Hero: React.FC = () => {
   };
 
   const handleContactClick = () => {
-    document.querySelector('#contact')?.scrollIntoView({ behavior: 'smooth' });
+    const contactSection = document.querySelector('#contact');
+    if (contactSection) {
+      contactSection.scrollIntoView({ behavior: 'smooth' });
+    }
   };
 
   const handleScrollDown = () => {
-    document.querySelector('#about')?.scrollIntoView({ behavior: 'smooth' });
+    const aboutSection = document.querySelector('#about');
+    if (aboutSection) {
+      aboutSection.scrollIntoView({ behavior: 'smooth' });
+    }
   };
 
   return (
     <section
       id="home"
-      className="min-h-screen flex items-center justify-center relative overflow-hidden bg-gradient-to-b from-slate-50 via-white to-blue-50/30 dark:from-gray-950 dark:via-gray-900 dark:to-slate-900"
+      className="min-h-screen flex items-center justify-center relative overflow-hidden bg-gradient-to-br from-blue-50 via-indigo-50 to-teal-50 dark:from-gray-900 dark:via-slate-900 dark:to-gray-900"
     >
-      {/* Refined animated background */}
+      {/* Enhanced Animated Background */}
       <div className="absolute inset-0 overflow-hidden">
-        <div className="absolute -top-1/4 -right-1/4 w-[600px] h-[600px] bg-blue-400/10 dark:bg-blue-500/5 rounded-full blur-3xl" />
-        <div className="absolute -bottom-1/4 -left-1/4 w-[600px] h-[600px] bg-teal-400/10 dark:bg-teal-500/5 rounded-full blur-3xl" />
+        {/* Animated Gradient Orbs */}
+        <div className="absolute -top-1/2 -right-1/2 w-full h-full">
+          <div className="w-[800px] h-[800px] bg-gradient-to-r from-blue-400/20 via-indigo-400/20 to-teal-400/20 rounded-full blur-3xl animate-pulse" />
+        </div>
+        <div className="absolute -bottom-1/2 -left-1/2 w-full h-full">
+          <div className="w-[800px] h-[800px] bg-gradient-to-r from-teal-400/20 via-cyan-400/20 to-blue-400/20 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '1s' }} />
+        </div>
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full">
+          <div className="w-[600px] h-[600px] bg-gradient-to-r from-purple-400/15 via-pink-400/15 to-indigo-400/15 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '2s' }} />
+        </div>
 
-        {/* Grid pattern */}
-        <div className="absolute inset-0 bg-[linear-gradient(to_right,#8080800a_1px,transparent_1px),linear-gradient(to_bottom,#8080800a_1px,transparent_1px)] bg-[size:48px_48px] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_50%,#000_60%,transparent_100%)]" />
+        {/* Enhanced Grid Pattern */}
+        <div className="absolute inset-0 bg-[linear-gradient(to_right,#8080800a_1px,transparent_1px),linear-gradient(to_bottom,#8080800a_1px,transparent_1px)] bg-[size:14px_24px] [mask-image:radial-gradient(ellipse_70%_60%_at_50%_0%,#000_70%,transparent_100%)]" />
 
-        {/* Subtle floating particles */}
+        {/* Floating Particles with More Variety */}
         <div className="absolute inset-0">
-          {Array.from({ length: 18 }).map((_, i) => (
+          {Array.from({ length: 50 }).map((_, i) => (
             <div
               key={i}
               className="absolute rounded-full animate-float"
               style={{
-                width: `${Math.random() * 5 + 2}px`,
-                height: `${Math.random() * 5 + 2}px`,
-                background: i % 2 === 0 ? 'rgba(59, 130, 246, 0.25)' : 'rgba(20, 184, 166, 0.25)',
+                width: `${Math.random() * 8 + 2}px`,
+                height: `${Math.random() * 8 + 2}px`,
+                background: i % 4 === 0 
+                  ? 'rgba(59, 130, 246, 0.4)' 
+                  : i % 4 === 1 
+                  ? 'rgba(20, 184, 166, 0.4)' 
+                  : i % 4 === 2
+                  ? 'rgba(99, 102, 241, 0.4)'
+                  : 'rgba(168, 85, 247, 0.4)',
                 left: `${Math.random() * 100}%`,
                 top: `${Math.random() * 100}%`,
                 animationDelay: `${Math.random() * 5}s`,
-                animationDuration: `${4 + Math.random() * 6}s`,
-                filter: 'blur(0.5px)',
+                animationDuration: `${3 + Math.random() * 7}s`,
+                filter: 'blur(1px)',
               }}
             />
           ))}
         </div>
+
+        {/* Animated Lines */}
+        <div className="absolute inset-0 opacity-20">
+          <div className="absolute top-1/4 left-0 right-0 h-px bg-gradient-to-r from-transparent via-blue-400 to-transparent animate-pulse" />
+          <div className="absolute top-1/2 left-0 right-0 h-px bg-gradient-to-r from-transparent via-indigo-400 to-transparent animate-pulse" style={{ animationDelay: '1s' }} />
+          <div className="absolute top-3/4 left-0 right-0 h-px bg-gradient-to-r from-transparent via-teal-400 to-transparent animate-pulse" style={{ animationDelay: '2s' }} />
+        </div>
       </div>
 
-      {/* Main content */}
-      <div ref={ref} className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-28 sm:pt-32 lg:pt-36 pb-20">
-        <div className="flex flex-col lg:flex-row items-center justify-center gap-12 lg:gap-20">
-
-          {/* Profile picture */}
-          <motion.div
-            initial={{ opacity: 0, scale: 0.9, x: -20 }}
-            animate={isVisible ? { opacity: 1, scale: 1, x: 0 } : {}}
-            transition={{ duration: 0.8, ease: [0.25, 0.1, 0.25, 1] }}
-            className="flex-shrink-0"
+      {/* Main Content */}
+      <div ref={ref} className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-24 sm:pt-28 lg:pt-32 pb-20">
+        <div className="flex flex-col lg:flex-row items-center justify-center gap-12 lg:gap-24">
+          
+          {/* Enhanced Profile Picture */}
+          <div
+            className={`flex-shrink-0 transition-all duration-1000 ${
+              isVisible ? 'opacity-100 translate-x-0 scale-100' : 'opacity-0 -translate-x-12 scale-90'
+            }`}
           >
             <div className="relative group">
-              {/* Glow rings */}
-              <div className="absolute -inset-3 bg-gradient-to-r from-blue-500/30 to-teal-500/30 rounded-full blur-2xl opacity-50 group-hover:opacity-70 transition duration-700" />
-              <div className="absolute -inset-1 bg-gradient-to-r from-blue-500 to-teal-500 rounded-full opacity-60 group-hover:opacity-80 animate-spin-slow" style={{ animationDuration: '12s' }} />
+              {/* Multiple Gradient Rings */}
+              <div className="absolute -inset-3 bg-gradient-to-r from-blue-600 via-indigo-600 to-teal-600 rounded-full blur-2xl opacity-60 group-hover:opacity-90 transition duration-1000 animate-pulse"></div>
+              <div className="absolute -inset-2 bg-gradient-to-r from-teal-400 via-cyan-400 to-blue-400 rounded-full blur-xl opacity-40 group-hover:opacity-70 transition duration-700" style={{ animationDelay: '0.5s' }}></div>
 
-              {/* Image */}
+              {/* Rotating Border */}
+              <div className="absolute -inset-1 bg-gradient-to-r from-blue-600 via-indigo-600 via-purple-600 to-teal-600 rounded-full opacity-75 group-hover:opacity-100 animate-spin-slow"></div>
+
+              {/* Profile Image Container */}
               <div className="relative">
                 <img
                   src="/profile.jpg"
                   alt={personalInfo.name}
-                  className="relative w-56 h-56 sm:w-64 sm:h-64 lg:w-72 lg:h-72 rounded-full object-cover border-4 border-white dark:border-gray-900 shadow-2xl transition-transform duration-500 group-hover:scale-105"
+                  className="relative w-64 h-64 sm:w-72 sm:h-72 lg:w-80 lg:h-80 rounded-full object-cover border-4 border-white dark:border-gray-900 shadow-2xl hover:shadow-3xl transition-all duration-500 group-hover:scale-105"
                 />
 
-                {/* Status badge */}
-                <div className="absolute bottom-6 right-2 sm:right-4 bg-white dark:bg-gray-800 text-gray-900 dark:text-white px-4 py-2 rounded-full text-xs font-bold shadow-xl flex items-center space-x-2 border border-green-200 dark:border-green-500/30">
-                  <span className="relative flex h-2.5 w-2.5">
-                    <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75" />
-                    <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-green-500" />
-                  </span>
+                {/* Enhanced Status Badge with Icon */}
+                <div className="absolute bottom-8 right-6 bg-gradient-to-r from-green-400 via-emerald-500 to-teal-500 text-white px-5 py-2.5 rounded-full text-sm font-bold shadow-2xl flex items-center space-x-2 border-3 border-white dark:border-gray-900 hover:shadow-green-500/50 hover:scale-110 transition-all duration-300 animate-bounce-slow">
+                  <Sparkles size={16} className="animate-pulse" />
                   <span>Available for Work</span>
                 </div>
 
-                {/* Floating icon badges */}
-                <div className="absolute -top-3 -right-3 bg-white dark:bg-gray-800 p-2.5 rounded-xl shadow-lg border border-gray-200 dark:border-gray-700 animate-float" style={{ animationDuration: '4s' }}>
-                  <Code2 size={20} className="text-blue-500" />
+                {/* Floating Icons Around Profile */}
+                <div className="absolute -top-4 -right-4 bg-gradient-to-br from-blue-500 to-indigo-600 p-3 rounded-2xl shadow-xl animate-float" style={{ animationDelay: '0s', animationDuration: '3s' }}>
+                  <Code2 size={24} className="text-white" />
                 </div>
-                <div className="absolute -bottom-3 -left-3 bg-white dark:bg-gray-800 p-2.5 rounded-xl shadow-lg border border-gray-200 dark:border-gray-700 animate-float" style={{ animationDuration: '5s', animationDelay: '1s' }}>
-                  <Zap size={20} className="text-teal-500" />
+                <div className="absolute -bottom-4 -left-4 bg-gradient-to-br from-teal-500 to-cyan-600 p-3 rounded-2xl shadow-xl animate-float" style={{ animationDelay: '1s', animationDuration: '4s' }}>
+                  <Zap size={24} className="text-white" />
                 </div>
               </div>
             </div>
-          </motion.div>
+          </div>
 
-          {/* Text content */}
+          {/* Enhanced Text Content */}
           <div className="flex-1 text-center lg:text-left max-w-2xl">
-            {/* Greeting */}
-            <motion.div
-              custom={0}
-              variants={fadeUp}
-              initial="hidden"
-              animate={isVisible ? 'visible' : 'hidden'}
-              className="inline-flex items-center gap-2 mb-5 px-4 py-1.5 rounded-full bg-blue-50 dark:bg-blue-500/10 ring-1 ring-blue-200/60 dark:ring-blue-500/20"
+            {/* Greeting with Icon */}
+            <div
+              className={`inline-flex items-center gap-2 mb-4 transition-all duration-1000 ${
+                isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
+              }`}
             >
-              <Sparkles size={15} className="text-blue-500" />
-              <span className="text-sm font-semibold text-blue-600 dark:text-blue-400">Welcome to my portfolio</span>
-            </motion.div>
+              <span className="text-4xl sm:text-5xl animate-wave">👋</span>
+              <span className="text-xl sm:text-2xl font-semibold text-gray-600 dark:text-gray-400">Welcome!</span>
+            </div>
 
-            {/* Name heading */}
-            <motion.h1
-              custom={0.1}
-              variants={fadeUp}
-              initial="hidden"
-              animate={isVisible ? 'visible' : 'hidden'}
-              className="text-5xl sm:text-6xl lg:text-7xl font-black mb-4 leading-[1.1] tracking-tight"
+            {/* Main Heading with Enhanced Gradient */}
+            <h1
+              className={`text-5xl sm:text-6xl lg:text-7xl font-black mb-6 transition-all duration-1000 delay-100 leading-tight ${
+                isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
+              }`}
             >
-              <span className="block text-gray-900 dark:text-white">Hi, I'm</span>
-              <span className="block bg-gradient-to-r from-blue-600 via-sky-500 to-teal-500 dark:from-blue-400 dark:via-sky-400 dark:to-teal-400 bg-clip-text text-transparent mt-1">
+              <span className="block bg-gradient-to-r from-gray-900 via-blue-900 to-gray-900 dark:from-white dark:via-blue-200 dark:to-white bg-clip-text text-transparent animate-gradient bg-[length:200%_auto]">
+                Hi, I'm
+              </span>
+              <span className="block bg-gradient-to-r from-blue-600 via-indigo-600 to-teal-600 dark:from-blue-400 dark:via-indigo-400 dark:to-teal-400 bg-clip-text text-transparent mt-2 animate-gradient bg-[length:200%_auto]">
                 {personalInfo.name}
               </span>
-            </motion.h1>
+            </h1>
 
-            {/* Typing animation */}
-            <motion.div
-              custom={0.2}
-              variants={fadeUp}
-              initial="hidden"
-              animate={isVisible ? 'visible' : 'hidden'}
-              className="text-2xl sm:text-3xl font-bold mb-6 min-h-[48px] flex items-center justify-center lg:justify-start gap-2"
+            {/* Enhanced Typing Animation */}
+            <div
+              className={`text-2xl sm:text-3xl lg:text-4xl font-bold mb-8 min-h-[80px] flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-3 transition-all duration-1000 delay-200 ${
+                isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
+              }`}
             >
-              <span className="text-gray-500 dark:text-gray-400 font-medium">I'm a</span>
-              <span className="bg-gradient-to-r from-blue-600 via-sky-500 to-teal-500 dark:from-blue-400 dark:via-sky-400 dark:to-teal-400 bg-clip-text text-transparent font-black">
-                {typingText}
+              <span className="text-gray-600 dark:text-gray-400 flex items-center gap-2">
+                <Sparkles size={28} className="text-yellow-500 animate-pulse" />
+                I'm a
               </span>
-              <span className="animate-pulse text-blue-500">|</span>
-            </motion.div>
+              <span className="relative">
+                <span className="bg-gradient-to-r from-blue-600 via-indigo-600 to-teal-600 dark:from-blue-400 dark:via-indigo-400 dark:to-teal-400 bg-clip-text text-transparent animate-gradient bg-[length:200%_auto] font-black">
+                  {typingText}
+                </span>
+                <span className="animate-pulse text-blue-600 dark:text-blue-400 ml-1">|</span>
+              </span>
+            </div>
 
-            {/* Bio */}
-            <motion.p
-              custom={0.3}
-              variants={fadeUp}
-              initial="hidden"
-              animate={isVisible ? 'visible' : 'hidden'}
-              className="text-lg text-gray-600 dark:text-gray-400 mb-8 leading-relaxed max-w-xl"
+            {/* Enhanced Description */}
+            <p
+              className={`text-lg sm:text-xl text-gray-600 dark:text-gray-400 mb-10 leading-relaxed transition-all duration-1000 delay-300 ${
+                isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
+              }`}
             >
               {personalInfo.bio}
-            </motion.p>
+            </p>
 
-            {/* Social links */}
-            <motion.div
-              custom={0.4}
-              variants={fadeUp}
-              initial="hidden"
-              animate={isVisible ? 'visible' : 'hidden'}
-              className="flex gap-3 justify-center lg:justify-start mb-8"
+            {/* Social Links (New Addition) */}
+            <div
+              className={`flex gap-3 justify-center lg:justify-start mb-8 transition-all duration-1000 delay-400 ${
+                isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
+              }`}
             >
-              {[
-                { href: 'https://github.com/ajnish-kumar-sahu', icon: Github },
-                { href: 'https://linkedin.com/in/ajnish-kumar-20ag', icon: Linkedin },
-                { href: '#', icon: Twitter },
-              ].map(({ href, icon: Icon }, i) => (
-                <a
-                  key={i}
-                  href={href}
-                  target={href !== '#' ? '_blank' : undefined}
-                  rel="noopener noreferrer"
-                  className="group p-3 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-xl hover:border-blue-400 dark:hover:border-blue-400 hover:shadow-lg hover:shadow-blue-500/10 hover:-translate-y-0.5 transition-all duration-300"
-                >
-                  <Icon size={20} className="text-gray-600 dark:text-gray-300 group-hover:text-blue-500 transition-colors" />
-                </a>
-              ))}
-            </motion.div>
+              <a href="https://github.com/ajnish-kumar-sahu" className="group p-3 bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm border border-gray-200 dark:border-gray-700 rounded-xl hover:border-blue-500 dark:hover:border-blue-400 hover:shadow-lg hover:scale-110 transition-all duration-300">
+                <Github size={22} className="text-gray-700 dark:text-gray-300 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors" />
+              </a>
+              <a href="https://linkedin.com/in/ajnish-kumar-20ag" className="group p-3 bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm border border-gray-200 dark:border-gray-700 rounded-xl hover:border-blue-500 dark:hover:border-blue-400 hover:shadow-lg hover:scale-110 transition-all duration-300">
+                <Linkedin size={22} className="text-gray-700 dark:text-gray-300 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors" />
+              </a>
+              <a href="#" className="group p-3 bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm border border-gray-200 dark:border-gray-700 rounded-xl hover:border-blue-500 dark:hover:border-blue-400 hover:shadow-lg hover:scale-110 transition-all duration-300">
+                <Twitter size={22} className="text-gray-700 dark:text-gray-300 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors" />
+              </a>
+            </div>
 
-            {/* CTA buttons */}
-            <motion.div
-              custom={0.5}
-              variants={fadeUp}
-              initial="hidden"
-              animate={isVisible ? 'visible' : 'hidden'}
-              className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start items-center"
+            {/* Enhanced CTA Buttons */}
+            <div
+              className={`flex flex-col sm:flex-row gap-4 justify-center lg:justify-start items-center transition-all duration-1000 delay-500 ${
+                isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
+              }`}
             >
               <button
                 onClick={handleContactClick}
-                className="group relative px-8 py-4 bg-gradient-to-r from-blue-600 to-teal-500 text-white font-bold rounded-2xl hover:shadow-xl hover:shadow-blue-500/30 hover:scale-[1.03] transition-all duration-300 flex items-center space-x-2.5"
+                className="group relative px-10 py-5 bg-gradient-to-r from-blue-600 via-indigo-600 to-teal-600 text-white font-bold rounded-2xl hover:shadow-2xl hover:shadow-blue-500/40 transform hover:scale-105 transition-all duration-300 flex items-center space-x-3 overflow-hidden"
               >
-                <Mail size={20} />
-                <span>Let's Connect</span>
+                <div className="absolute inset-0 bg-gradient-to-r from-teal-600 via-indigo-600 to-blue-600 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                <Mail size={22} className="relative z-10 group-hover:rotate-12 transition-transform duration-300" />
+                <span className="relative z-10 text-lg">Let's Connect</span>
+                <Sparkles size={18} className="relative z-10 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
               </button>
 
               <button
                 onClick={handleDownloadResume}
-                className="group px-8 py-4 bg-white dark:bg-gray-800 text-gray-900 dark:text-white font-bold rounded-2xl border-2 border-gray-200 dark:border-gray-700 hover:border-blue-400 dark:hover:border-blue-400 hover:shadow-lg transition-all duration-300 flex items-center space-x-2.5"
+                className="group relative px-10 py-5 bg-white dark:bg-gray-800 text-gray-900 dark:text-white font-bold rounded-2xl border-2 border-gray-300 dark:border-gray-600 hover:border-blue-500 dark:hover:border-blue-400 hover:shadow-2xl transform hover:scale-105 transition-all duration-300 flex items-center space-x-3 overflow-hidden"
               >
-                <Download size={20} className="group-hover:translate-y-0.5 transition-transform" />
-                <span>View Resume</span>
+                <div className="absolute inset-0 bg-gradient-to-r from-blue-500/10 to-indigo-500/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                <Download size={22} className="relative z-10 group-hover:translate-y-1 transition-transform duration-300" />
+                <span className="relative z-10 text-lg">View Resume</span>
               </button>
-            </motion.div>
+            </div>
 
-            {/* Stats */}
-            <div className="mt-12 grid grid-cols-2 sm:grid-cols-4 gap-3 sm:gap-4">
-              <StatCard icon={Code2} value={stats.projectsCompleted} suffix="+" label="Projects" color="from-blue-500 to-sky-400" delay={0.6} />
-              <StatCard icon={Zap} value={stats.technologiesLearned} suffix="+" label="Tech" color="from-teal-500 to-emerald-400" delay={0.7} />
-              <StatCard icon={Trophy} value={stats.certificationsEarned} suffix="+" label="Certs" color="from-amber-500 to-orange-400" delay={0.8} />
-              <StatCard icon={Users} value={stats.yearsOfStudy} suffix="+" label="Years" color="from-sky-500 to-blue-400" delay={0.9} />
+            {/* Enhanced Quick Stats */}
+            <div ref={statsRef} className="mt-14 grid grid-cols-2 sm:grid-cols-4 gap-4">
+              <div data-stat-card className="group relative p-5 bg-gradient-to-br from-white/90 to-white/70 dark:from-gray-800/90 dark:to-gray-800/70 backdrop-blur-xl border border-gray-200/50 dark:border-gray-700/50 rounded-2xl hover:border-blue-400/60 dark:hover:border-blue-400/60 transition-all duration-300 transform hover:scale-105 hover:shadow-xl overflow-hidden">
+                <div className="absolute inset-0 bg-gradient-to-br from-blue-500/10 to-indigo-500/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                <div className="relative flex flex-col items-center space-y-3">
+                  <div className="p-3 bg-gradient-to-br from-blue-500/20 to-indigo-500/20 rounded-xl group-hover:scale-110 group-hover:rotate-6 transition-all duration-300">
+                    <Code2 size={24} className="text-blue-600 dark:text-blue-400" />
+                  </div>
+                  <p className="text-2xl font-black text-gray-900 dark:text-white">{stats.projectsCompleted}+</p>
+                  <p className="text-sm font-semibold text-gray-600 dark:text-gray-400">Projects</p>
+                </div>
+              </div>
+
+              <div data-stat-card className="group relative p-5 bg-gradient-to-br from-white/90 to-white/70 dark:from-gray-800/90 dark:to-gray-800/70 backdrop-blur-xl border border-gray-200/50 dark:border-gray-700/50 rounded-2xl hover:border-teal-400/60 dark:hover:border-teal-400/60 transition-all duration-300 transform hover:scale-105 hover:shadow-xl overflow-hidden">
+                <div className="absolute inset-0 bg-gradient-to-br from-teal-500/10 to-cyan-500/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                <div className="relative flex flex-col items-center space-y-3">
+                  <div className="p-3 bg-gradient-to-br from-teal-500/20 to-cyan-500/20 rounded-xl group-hover:scale-110 group-hover:rotate-6 transition-all duration-300">
+                    <Zap size={24} className="text-teal-600 dark:text-teal-400" />
+                  </div>
+                  <p className="text-2xl font-black text-gray-900 dark:text-white">{stats.technologiesLearned}+</p>
+                  <p className="text-sm font-semibold text-gray-600 dark:text-gray-400">Technologies</p>
+                </div>
+              </div>
+
+              <div data-stat-card className="group relative p-5 bg-gradient-to-br from-white/90 to-white/70 dark:from-gray-800/90 dark:to-gray-800/70 backdrop-blur-xl border border-gray-200/50 dark:border-gray-700/50 rounded-2xl hover:border-purple-400/60 dark:hover:border-purple-400/60 transition-all duration-300 transform hover:scale-105 hover:shadow-xl overflow-hidden">
+                <div className="absolute inset-0 bg-gradient-to-br from-purple-500/10 to-pink-500/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                <div className="relative flex flex-col items-center space-y-3">
+                  <div className="p-3 bg-gradient-to-br from-purple-500/20 to-pink-500/20 rounded-xl group-hover:scale-110 group-hover:rotate-6 transition-all duration-300">
+                    <Trophy size={24} className="text-purple-600 dark:text-purple-400" />
+                  </div>
+                  <p className="text-2xl font-black text-gray-900 dark:text-white">{stats.certificationsEarned}+</p>
+                  <p className="text-sm font-semibold text-gray-600 dark:text-gray-400">Certifications</p>
+                </div>
+              </div>
+
+              <div data-stat-card className="group relative p-5 bg-gradient-to-br from-white/90 to-white/70 dark:from-gray-800/90 dark:to-gray-800/70 backdrop-blur-xl border border-gray-200/50 dark:border-gray-700/50 rounded-2xl hover:border-orange-400/60 dark:hover:border-orange-400/60 transition-all duration-300 transform hover:scale-105 hover:shadow-xl overflow-hidden">
+                <div className="absolute inset-0 bg-gradient-to-br from-orange-500/10 to-red-500/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                <div className="relative flex flex-col items-center space-y-3">
+                  <div className="p-3 bg-gradient-to-br from-orange-500/20 to-red-500/20 rounded-xl group-hover:scale-110 group-hover:rotate-6 transition-all duration-300">
+                    <Users size={24} className="text-orange-600 dark:text-orange-400" />
+                  </div>
+                  <p className="text-2xl font-black text-gray-900 dark:text-white">{stats.yearsOfStudy}+</p>
+                  <p className="text-sm font-semibold text-gray-600 dark:text-gray-400">Years</p>
+                </div>
+              </div>
             </div>
           </div>
         </div>
 
-        {/* Scroll indicator */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: isVisible ? 1 : 0 }}
-          transition={{ delay: 1.2 }}
-          className="text-center mt-16"
-        >
+        {/* Enhanced Scroll Indicator */}
+        <div className="text-center mt-24">
           <button
             onClick={handleScrollDown}
-            className="group inline-flex flex-col items-center gap-2"
+            className={`group relative inline-flex flex-col items-center gap-2 transition-all duration-1000 delay-700 hover:scale-110 ${
+              isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
+            }`}
             aria-label="Scroll to next section"
           >
-            <span className="text-xs font-medium text-gray-400 dark:text-gray-500 group-hover:text-blue-500 transition-colors uppercase tracking-wider">Scroll Down</span>
-            <div className="p-2.5 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-full group-hover:border-blue-400 group-hover:shadow-lg transition-all duration-300 animate-bounce">
-              <ArrowDown size={18} className="text-gray-500 dark:text-gray-400 group-hover:text-blue-500 transition-colors" />
+            <span className="text-sm font-semibold text-gray-500 dark:text-gray-400 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">Scroll Down</span>
+            <div className="p-3 bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm border border-gray-200 dark:border-gray-700 rounded-full group-hover:border-blue-500 dark:group-hover:border-blue-400 group-hover:shadow-lg transition-all duration-300 animate-bounce">
+              <ArrowDown size={24} className="text-gray-600 dark:text-gray-400 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors" />
             </div>
           </button>
-        </motion.div>
+        </div>
       </div>
 
+      {/* Custom Animations */}
       <style>{`
+        @keyframes gradient {
+          0%, 100% { background-position: 0% 50%; }
+          50% { background-position: 100% 50%; }
+        }
+
+        .animate-gradient {
+          animation: gradient 6s ease infinite;
+        }
+
+        @keyframes wave {
+          0%, 100% { transform: rotate(0deg); }
+          25% { transform: rotate(20deg); }
+          75% { transform: rotate(-15deg); }
+        }
+
+        .animate-wave {
+          animation: wave 2s ease-in-out infinite;
+          display: inline-block;
+          transform-origin: 70% 70%;
+        }
+
         @keyframes spin-slow {
           from { transform: rotate(0deg); }
           to { transform: rotate(360deg); }
         }
+
         .animate-spin-slow {
-          animation: spin-slow 12s linear infinite;
+          animation: spin-slow 8s linear infinite;
+        }
+
+        @keyframes bounce-slow {
+          0%, 100% { transform: translateY(0); }
+          50% { transform: translateY(-10px); }
+        }
+
+        .animate-bounce-slow {
+          animation: bounce-slow 3s ease-in-out infinite;
+        }
+
+        @keyframes float {
+          0%, 100% { transform: translateY(0px) translateX(0px); }
+          25% { transform: translateY(-20px) translateX(10px); }
+          50% { transform: translateY(-40px) translateX(-10px); }
+          75% { transform: translateY(-20px) translateX(15px); }
+        }
+
+        .animate-float {
+          animation: float 6s ease-in-out infinite;
         }
       `}</style>
     </section>

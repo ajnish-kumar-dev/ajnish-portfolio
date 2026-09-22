@@ -4,42 +4,40 @@ import { Link } from 'react-router-dom';
 
 export function MarketplaceCTA() {
   return (
-    <section className="relative py-24 overflow-hidden bg-gradient-to-b from-gray-900 to-slate-950 dark:from-gray-950 dark:to-black">
-      {/* Background effects */}
+    <section className="relative py-24 overflow-hidden bg-gradient-to-b from-gray-900 to-[#0A0F1E]">
+      {/* Background Effects */}
       <div className="absolute inset-0">
-        <div className="absolute top-1/2 left-1/4 w-96 h-96 bg-teal-500/10 rounded-full blur-3xl" />
+        <div className="absolute top-1/2 left-1/4 w-96 h-96 bg-cyan-500/10 rounded-full blur-3xl" />
         <div className="absolute top-1/3 right-1/4 w-96 h-96 bg-blue-500/10 rounded-full blur-3xl" />
-        <div className="absolute inset-0 bg-[linear-gradient(to_right,#8080800a_1px,transparent_1px),linear-gradient(to_bottom,#8080800a_1px,transparent_1px)] bg-[size:48px_48px] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_50%,#000_60%,transparent_100%)]" />
       </div>
 
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
-          initial={{ opacity: 0, y: 24 }}
+          initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: '-80px' }}
-          transition={{ duration: 0.6 }}
+          viewport={{ once: true }}
           className="text-center"
         >
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-teal-500/10 border border-teal-500/20 mb-6">
-            <Sparkles className="w-4 h-4 text-teal-400" />
-            <span className="text-sm text-teal-400 font-medium">NEW: Marketplace</span>
+          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-cyan-500/10 border border-cyan-500/20 mb-8">
+            <Sparkles className="w-4 h-4 text-cyan-400" />
+            <span className="text-sm text-cyan-400 font-medium">NEW: Marketplace</span>
           </div>
 
-          <h2 className="text-4xl md:text-5xl font-bold text-white mb-5 tracking-tight">
+          <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
             Discover Premium
-            <span className="block bg-gradient-to-r from-blue-400 via-sky-400 to-teal-400 bg-clip-text text-transparent">
+            <span className="block bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent">
               Digital Products
             </span>
           </h2>
 
-          <p className="text-lg text-slate-400 max-w-2xl mx-auto mb-8">
+          <p className="text-xl text-slate-400 max-w-2xl mx-auto mb-10">
             Explore our curated collection of templates, tools, and resources to accelerate your projects
           </p>
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link
               to="/products"
-              className="inline-flex items-center justify-center gap-2 px-7 py-3.5 bg-gradient-to-r from-blue-600 to-teal-500 hover:from-blue-500 hover:to-teal-400 text-white font-semibold rounded-xl transition-all duration-300 shadow-lg shadow-blue-500/25"
+              className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500 text-white font-semibold rounded-xl transition-all duration-300 shadow-lg shadow-cyan-500/25"
             >
               <ShoppingBag className="w-5 h-5" />
               Browse Products
@@ -47,14 +45,14 @@ export function MarketplaceCTA() {
             </Link>
             <Link
               to="/signup"
-              className="inline-flex items-center justify-center gap-2 px-7 py-3.5 bg-slate-800 hover:bg-slate-700 text-white font-semibold rounded-xl border border-slate-700 transition-all duration-300"
+              className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-slate-800 hover:bg-slate-700 text-white font-semibold rounded-xl border border-slate-700 transition-all duration-300"
             >
               Create Account
             </Link>
           </div>
 
           {/* Stats */}
-          <div className="mt-14 grid grid-cols-2 md:grid-cols-4 gap-8">
+          <div className="mt-16 grid grid-cols-2 md:grid-cols-4 gap-8">
             {[
               { label: 'Products', value: '50+' },
               { label: 'Customers', value: '1,000+' },
